@@ -17,6 +17,7 @@ def scrape_website(website_url):
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/122.0.0.0'
     ]
+
     
     # Configure Chrome options to avoid detection
     options.add_argument(f'user-agent={random.choice(user_agents)}')
@@ -70,6 +71,7 @@ def extracr_body_content(html):
 
 
 def clean_body_content(body_content):
+    print(body_content)
     soup = BeautifulSoup(body_content, 'html.parser')
 
     for script_style in soup(['script', 'style']):

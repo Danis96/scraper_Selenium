@@ -8,15 +8,23 @@ url = st.text_input("Enter the URL of the website you want to scrape:")
 
 if st.button("Scrape site"):
     st.write(f"Scraping data from {url} ...")
-    html_result = scrape_website(url)
-    body_content = extracr_body_content(html_result)
-    cleaned_content = clean_body_content(body_content)
     
-    # save the cleaned content to the session state
-    st.session_state.dom_content = cleaned_content
+    # Add error handling
+    try:
+        html_result = scrape_website(url)
+        if html_result is None:
+            st.error("Failed to retrieve website content. Check the URL and try again.")
+        else:
+            body_content = extracr_body_content(html_result)
+            cleaned_content = clean_body_content(body_content)
+            
+            # save the cleaned content to the session state
+            st.session_state.dom_content = cleaned_content
 
-    with st.expander("View DOM content"):
-        st.text_area("DOM content", cleaned_content, height=300)
+            with st.expander("View DOM content"):
+                st.text_area("DOM content", cleaned_content, height=300)
+    except Exception as e:
+        st.error(f"An error occurred: {str(e)}")
 
 
 
