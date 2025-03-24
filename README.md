@@ -83,10 +83,6 @@ The scraper includes several features to avoid detection:
 
 Feel free to submit issues and enhancement requests!
 
-## License
-
-[Your chosen license]
-
 ## Author
 
-Lord Danis 
+Danis Preldzic 
